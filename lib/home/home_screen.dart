@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_app/list/tasks_screen.dart';
 
+import '../list/add_task.dart';
 import '../settings/settings_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  static const String routeName ='home';
+  static const String routeName = 'home';
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-int selectedIndex=0;
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -19,33 +20,41 @@ int selectedIndex=0;
         title: Text('To Do List'),
       ),
       floatingActionButton: FloatingActionButton(
-        shape: StadiumBorder(side: BorderSide(color: Colors.white,width: 3)),
-          onPressed: (){},child: Icon(Icons.add)),
+          shape: StadiumBorder(side: BorderSide(color: Colors.white, width: 3)),
+          onPressed: () {
+            showAddTaskBottomSheet();
+          },
+          child: Icon(Icons.add)),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: tabs[selectedIndex],
-
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
         notchMargin: 8,
         child: BottomNavigationBar(
           currentIndex: selectedIndex,
-          onTap: (index){
+          onTap: (index) {
             setState(() {
-              selectedIndex=index;
-
+              selectedIndex = index;
             });
           },
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.list),label: ''),
-            BottomNavigationBarItem(icon: Icon(Icons.settings),label: ''),
+            BottomNavigationBarItem(icon: Icon(Icons.list), label: ''),
+            BottomNavigationBarItem(icon: Icon(Icons.settings), label: ''),
           ],
         ),
       ),
     );
   }
 
-  List<Widget> tabs =[
-TasksScreen(),
+  List<Widget> tabs = [
+    TasksScreen(),
     SettingsScreen(),
   ];
+
+  void showAddTaskBottomSheet() {
+    showModalBottomSheet(
+        context: context,
+        builder: (context) => AddTask(),
+    );
+  }
 }
