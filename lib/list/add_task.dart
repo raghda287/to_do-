@@ -11,47 +11,44 @@ class _AddTaskState extends State<AddTask> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(12.0),
-      child: Container(
-          height: double.infinity,
-          width: double.infinity,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Text(
-                'Add New Task',
-                style: Theme.of(context).textTheme.headline5,
-              ),
-              TextFormField(
-                decoration: InputDecoration(
-                    label: Text(
-                  'Title',
-                )),
-              ),
-              TextFormField(
-                minLines: 4,
-                maxLines: 4,
-                decoration:  InputDecoration(label: Text('Description')),
-              ),
-              SizedBox(height: 16,),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(
+            'Add New Task',
+            style: Theme.of(context).textTheme.headline5,
+          ),
+          TextFormField(
+            decoration: InputDecoration(
+                label: Text(
+              'Title',
+            )),
+          ),
+          TextFormField(
+            minLines: 4,
+            maxLines: 4,
+            decoration:  InputDecoration(label: Text('Description')),
+          ),
+          const SizedBox(height: 16,),
 
-              Text('Select Date',style: Theme.of(context).textTheme.headline6,),
-              SizedBox(height: 16,),
-              InkWell(
-                  onTap: () {
-                    showTaskDatePicker();
-                  },
-                  child: Text(
-                    '10/13/1999',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline6
-                        ?.copyWith(color: MyTheme.lightPrimary),
-                  )),
-              SizedBox(height: 28,),
+          Text('Select Date',style: Theme.of(context).textTheme.headline6,),
+          const SizedBox(height: 16,),
+          InkWell(
+              onTap: () {
+                showTaskDatePicker();
+              },
+              child: Text(
+                '10/13/1999',
+                style: Theme.of(context)
+                    .textTheme
+                    .headline6
+                    ?.copyWith(color: MyTheme.lightPrimary),
+              )),
+          const SizedBox(height: 28,),
 
-              ElevatedButton(onPressed: (){}, child: Text('Submit'),),
-            ],
-          )),
+          ElevatedButton(onPressed: (){}, child: Text('Submit'),),
+        ],
+      ),
     );
   }
 
